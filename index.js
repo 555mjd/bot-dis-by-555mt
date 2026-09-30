@@ -136,7 +136,7 @@ client.on('messageCreate', async (message) => {
                 .setCustomId('apply_toggle')
                 .setLabel('Manage')
                 .setStyle(ButtonStyle.Secondary)
-                .setEmoji('⚙️')
+                .setEmoji('⚙️️')
         );
 
         await message.channel.send({ embeds: [embed], components: [row] });
@@ -258,4 +258,6 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     }
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.DISCORD_TOKEN).catch((err) => {
+    console.error('❌ فشل تسجيل دخول البوت بسبب خطأ في التوكن أو الاتصال:', err);
+});
