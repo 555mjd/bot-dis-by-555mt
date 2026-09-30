@@ -258,8 +258,8 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     }
 });
 
-// تسجيل الدخول مع التقاط الأخطاء إن وجدت
-client.login(process.env.DISCORD_TOKEN).then(() => {
+// تسجيل الدخول بالتوكن مباشرة (استبدل النص داخل الأقواس بتوكن بوتك الحقيقي)
+client.login("MTU1NDQ2MTkwMTM4MjIyNTkyMQ.G_COCL.XCWdhCJzUEYlYfLDTPIGCqBCMg3Ra7Y7plX1kI").then(() => {
     console.log('✅ تم إرسال أمر الاتصال بنجاح إلى ديسكورد');
 }).catch((err) => {
     console.error('❌ خطأ في الاتصال بديسكورد:', err);
