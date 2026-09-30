@@ -136,7 +136,7 @@ client.on('messageCreate', async (message) => {
                 .setCustomId('apply_toggle')
                 .setLabel('Manage')
                 .setStyle(ButtonStyle.Secondary)
-                .setEmoji('⚙️️')
+                .setEmoji('⚙')
         );
 
         await message.channel.send({ embeds: [embed], components: [row] });
@@ -194,7 +194,7 @@ client.on('interactionCreate', async (interaction) => {
             interaction.customId === 'open_ban_modal' ||
             interaction.customId === 'open_perm_modal'
         ) {
-            if (banbot && typeof banbot.handleInteraction === 'function') {
+            if (banbot && typeof banbot.handleMessage === 'function') {
                 await banbot.handleInteraction(interaction);
             }
         }
@@ -258,6 +258,9 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     }
 });
 
-client.login(process.env.DISCORD_TOKEN).catch((err) => {
-    console.error('❌ فشل تسجيل دخول البوت بسبب خطأ في التوكن أو الاتصال:', err);
+// تسجيل الدخول مع التقاط الأخطاء إن وجدت
+client.login(process.env.DISCORD_TOKEN).then(() => {
+    console.log('✅ تم إرسال أمر الاتصال بنجاح إلى ديسكورد');
+}).catch((err) => {
+    console.error('❌ خطأ في الاتصال بديسكورد:', err);
 });
